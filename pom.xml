@@ -18,6 +18,8 @@
     <jacoco.version>0.8.8</jacoco.version>
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <sonar.organization>antoniodo2001</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.jacoco.reportPath>${TIComo_project}/../target/jacoco.exec</sonar.jacoco.reportPath>
     <sonar.language>java</sonar.language>
 	</properties>
