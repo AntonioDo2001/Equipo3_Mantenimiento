@@ -1,0 +1,209 @@
+<div class="contenedor_login_padre">
+    <div class="contenedor_login_hijo">
+        <div class="contenedor_header3 contenedor_horizontal">
+            <img class="img_logo2" src="../../../assets/ui_images/logo3.png" alt="">
+            <div class="botones contenedor_horizontal">
+                
+                
+
+                <div id="cont_btn_opc" class="contenedor_horizontal">
+
+                    <button id="new_pedido" (click)="realizarPedidos()">
+                        <img class="img_icon" src="../../../assets/ui_images/add_icon.svg" /></button>
+                </div>
+
+                <h2 class="sep">|</h2>
+                <button id="logout_res" (click)="logout()">
+                    <img class="img_icon" src="../../../assets/ui_images/home_icon.svg" /></button>
+            </div>
+        </div>
+    <section class="portada">
+        <div class="contenedor_campos">
+            <div class="labels contenedor_horizontal">
+                <div class="label_lista">
+                    <h2 class="label_cuadro">Restaurantes</h2>
+                </div>
+                <div class="label_datos">
+                    <h2 class="label_cuadro">Datos del Restaurante</h2>
+                </div>
+            </div>
+            <div class="contenido contenedor_horizontal">
+                <div class="contenedor_lista">
+                    <ul id="listaRestaurantes" class="listaElementos">
+                        <li class="elementoBase" *ngFor="let element of listaRestaurantes" (click)="onSelect(element)">
+                            {{ element.nombre }}</li>
+                    </ul>
+                </div>
+                <div class="contenedor_datos">
+                    <div id="contenedor_btn_ventanas" class="contenedor_botones_rest">
+
+                        <label class="texto_gris">{{ restauranteSelect }}</label>
+
+                        
+                    </div>
+                    <!-- Datos -->
+                    <div id="datos_v" class="contenedor_datos_rest2">
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato3">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="nombreRes">Nombre *</label>
+                                    <label class="aviso" for="nombreRes">{{ avisoNombre }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="nombreRes" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="razonRes">Razón Social *</label>
+                                    <label class="aviso" for="razonRes">{{ avisoRazon }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="razonRes" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="categoria">Categoría *</label>
+                                    <label class="aviso" for="categoria">{{ avisoCategoria }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="categoria" disabled />
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="CIFRes">CIF *</label>
+                                    <label class="aviso" for="CIFRes">{{ avisoCIF }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="CIFRes" disabled />
+                            </div>
+                            
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato3">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="direccionRes">Dirección *</label>
+                                    <label class="aviso" for="direccionRes">{{ avisoDireccion }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="direccionRes" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="emailRes">Correo *</label>
+                                    <label class="aviso" for="emailRes">{{ avisoEmail }}</label>
+                                </div>
+                                <input class="campo_entrada" type="email" id="emailRes" pattern=".+@globex\.com"
+                                    size="30" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="telRes">Teléfono *</label>
+                                    <label class="aviso" for="telRes">{{ avisoTelefono }}</label>
+                                </div>
+                                <input class="campo_entrada" type="tel" pattern="[0-9]+" id="telRes"
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="30" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carta -->
+                    <div id="carta_v" class="oculto contenedor_datos_rest">
+                        
+                    </div>
+                    <!-- Facturas -->
+                    <div id="facturas_v" class="oculto contenedor_datos_rest">
+                        
+                    </div>
+                    <!--Pedidos-->
+                    <div id="pedidos_v" class="oculto contenedor_datos_rest">
+                        <div class="labels contenedor_horizontal">
+                            <div class="label_lista2">
+                                <h2 class="label_cuadro2">Pedidos</h2>
+                            </div>
+                            <div class="label_datos2">
+                                <h2 class="label_cuadro2">Datos del Pedido</h2>
+                            </div>
+                            
+                        </div>
+                        <div class="contenido contenedor_horizontal">
+                            <div class="contenedor_lista_botones">
+                                <div id="cont_lista_pedidosRes" class="contenedor_lista_pedidos">
+                                    <ul id="listaPedidos" class="listaElementos">
+                                        <li class="elementoBase" *ngFor="let element of listaPedidosRes" (click)="onSelectPed(element)">
+                                            {{ element.cliente }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="contenedor_datos_pedidos">
+                                <div id="datos_pedidos">
+                                    <div class="linea_campo contenedor_horizontal">
+                                        <div class="campo_dato3">
+                                            <div class="contenedor_label contenedor_horizontal">
+                                                <label class="texto_gris" for="estadoPed">Estado</label>
+                                            </div>
+                                            <input class="campo_entrada" type="text" id="estadoPed" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="linea_campo contenedor_horizontal">
+                                        <div class="campo_dato3">
+                                            <div class="contenedor_label contenedor_horizontal">
+                                                <label class="texto_gris" for="riderPed">Rider</label>
+                                            </div>
+                                            <input class="campo_entrada" type="text" id="riderPed" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="contenedor_horizontal">
+                                        
+                                        <button  id="btn_cancelarPed" (click)="cancelarPedido()">Cancelar</button>
+                                    </div>
+                                    <div class="contenedor_horizontal">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_recibo">
+
+                                <div class="contenedor_horizontal linea_campo">
+                                    <img id="bordeRecibo" src="../../../assets/ui_images/borde-recibo2.png" alt="">
+                                    <p class="fechaRecibo">{{ pedidoSel.fecha }}</p>
+                                </div>
+                                
+                                <div class="datosRecibo">
+                                    <h2>Pedido</h2>
+                                    <p>Restaurante: <strong>{{ pedidoSel.restaurante }}</strong></p>
+                                    <p>Cliente: {{ pedidoSel.cliente }}</p>
+                                    <hr>
+                                </div>
+
+                                <div id="platosReciboPedidosRes" class="platosRecibo">
+                                    <ul id="listaPlatosPedido" class="listaElementos">
+                                        <li class="elementoBase" *ngFor="let element of listaPlatosPedidoSel">
+                                            <div class="lineaPlato">
+                                                <p><strong>{{ element.nombreP }}</strong></p>
+                                                <div class="contenedor_horizontal linea_campo">
+                                                    <p>Uds: {{ element.cantidad }}</p>
+                                                    <p><strong>{{ element.precioP }} €</strong></p>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="importeRecibo">
+                                    <hr>
+                                    <div class="contenedor_horizontal linea_campo">
+                                        <p><strong>Importe total: </strong></p>
+                                        <p><strong>{{ pedidoSelTotal }} €</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    </div>
+</div>

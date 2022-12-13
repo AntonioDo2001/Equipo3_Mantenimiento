@@ -1,0 +1,37 @@
+.contenedor_login_padre {
+    background: url(../../../assets/bg_images/food_bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_campos {
+    padding: 16px;
+    border: 5px solid #424242;
+    padding-bottom: 40px;
+}
+
+.contenedor_campos h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.contenedor_label {
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.o_sep {
+    margin-right: 8px;
+}
+
+a {
+    color: #fc8a15;
+    font-weight: bold;
+}

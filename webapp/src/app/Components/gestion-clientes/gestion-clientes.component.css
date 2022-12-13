@@ -1,0 +1,95 @@
+.contenedor_login_padre {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_login_hijo {
+    background: white;
+    width: 100%;
+    margin: 0px;
+}
+
+.contenedor_horizontal2 {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.contenedor_datos_rest {
+    width: 100%;
+    height: 500px;
+    border: 3px solid #757575;
+    padding: 24px 8px 8px 8px;
+}
+
+a {
+    color: #fc8a15;
+    font-weight: bold;
+}
+
+.label_cuadro {
+    position: relative;
+    background: white;
+    font-size: 1.2rem;
+    color: #424242;
+    font-weight: bold;
+    padding: 4px;
+    width: fit-content;
+    margin-left: 10px;
+    z-index: 100;
+}
+
+.label_cuadro2 {
+    position: relative;
+    background: #f5f5f5;
+    font-size: 1.2rem;
+    color: #424242;
+    font-weight: bold;
+    padding: 4px;
+    width: fit-content;
+    margin-left: 10px;
+    z-index: 100;
+}
+
+.botones {
+    width: fit-content;
+}
+
+.botones2 {
+    /*background: yellow;*/
+    margin: -1px auto 0 auto;
+    width: fit-content;
+}
+
+.label_lista {
+    width: 20%;
+}
+
+.label_datos {
+    width: 80%;
+}
+
+.label_lista2 {
+    width: 30%;
+}
+
+.label_datos2 {
+    width: 70%;
+}
+
+.labels {
+    height: 4px;
+}
+
+button {
+    appearance: none;
+    border-color: transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+.contenedor_label {
+    justify-content: space-between;
+}

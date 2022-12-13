@@ -1,0 +1,11 @@
+.portada {
+    padding-top: 90px;
+    background: url(../../../assets/bg_images/food2_bg3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,390 @@
+<div class="contenedor_login_padre">
+    <div class="contenedor_login_hijo">
+        <div class="contenedor_header3 contenedor_horizontal">
+            <img class="img_logo2" src="../../../assets/ui_images/logo3.png" alt="">
+            <div class="botones contenedor_horizontal">
+                <div id="cont_confirm_add" class="contenedor_horizontal oculto">
+                    <button (click)="aceptarCambiosCrear()">
+                        <img id="acept_add" class="img_icon" src="../../../assets/ui_images/acept.png" /></button>
+                    <button (click)="cancelarCambiosCrear()">
+                        <img id="cancel_add" class="img_icon" src="../../../assets/ui_images/cancel.svg" /></button>
+                </div>
+                <div id="cont_confirm_udt" class="contenedor_horizontal oculto">
+                    <button (click)="aceptarCambiosActualizar()">
+                        <img id="acept_udt" class="img_icon" src="../../../assets/ui_images/acept.png" /></button>
+                    <button (click)="cancelarCambiosActualizar()">
+                        <img id="cancel_udt" class="img_icon" src="../../../assets/ui_images/cancel.svg" /></button>
+                </div>
+
+                <div id="cont_btn_opc" class="contenedor_horizontal">
+
+                    <button id="add_res" (click)="activarCamposCrear()">
+                        <img class="img_icon" src="../../../assets/ui_images/add_icon.svg" /></button>
+                    <button id="update_res" class="oculto" (click)="activarCamposActualizar()">
+                        <img class="img_icon" src="../../../assets/ui_images/update2_icon.svg" /></button>
+                    <button id="delete_res" class="oculto" (click)="eliminar()">
+                        <img class="img_icon" src="../../../assets/ui_images/delete_icon.svg" /></button>
+                </div>
+
+                <h2 class="sep">|</h2>
+                <button id="logout_res" (click)="logout()">
+                    <img class="img_icon" src="../../../assets/ui_images/home_icon.svg" /></button>
+            </div>
+        </div>
+        <div class="contenedor_campos">
+            <div class="labels contenedor_horizontal">
+                <div class="label_lista">
+                    <h2 class="label_cuadro">Restaurantes</h2>
+                </div>
+                <div class="label_datos">
+                    <h2 class="label_cuadro">Datos del Restaurante</h2>
+                </div>
+            </div>
+            <div class="contenido contenedor_horizontal">
+                <div class="contenedor_lista">
+                    <ul id="listaRestaurantes" class="listaElementos">
+                        <li class="elementoBase" *ngFor="let element of listaRestaurantes" (click)="onSelect(element)">
+                            {{ element.nombre }}</li>
+                    </ul>
+                </div>
+                <div class="contenedor_datos">
+                    <div id="contenedor_btn_ventanas" class="contenedor_botones_rest">
+
+                        <label class="texto_gris">{{ restauranteSelect }}</label>
+
+                        <ul>
+                            <li>
+                                <button id="btn_datos" (click)="mostrar_datos()" class="btn">Datos</button>
+                            </li>
+                            <li>
+                                <button id="btn_carta" (click)="mostrar_carta()" class="btn">Carta</button>
+                            </li>
+                            <li>
+                                <button id="btn_pedidos" (click)="mostrar_pedidos()" class="btn">Pedidos</button>
+                            </li>
+                            <li>
+                                <button id="btn_facturas" (click)="mostrar_facturas()" class="btn">Facturas</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Datos -->
+                    <div id="datos_v" class="contenedor_datos_rest2">
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato3">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="nombreRes">Nombre *</label>
+                                    <label class="aviso" for="nombreRes">{{ avisoNombre }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="nombreRes" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="razonRes">Razón Social *</label>
+                                    <label class="aviso" for="razonRes">{{ avisoRazon }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="razonRes" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="categoria">Categoría *</label>
+                                    <label class="aviso" for="categoria">{{ avisoCategoria }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="categoria" disabled />
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="CIFRes">CIF *</label>
+                                    <label class="aviso" for="CIFRes">{{ avisoCIF }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="CIFRes" disabled />
+                            </div>
+                            <div class="campo_dato5">
+                                <label class="texto_gris" for="valoracionRes">Valoración</label>
+                                <div class="contenedor_horizontal">
+                                    <input class="campo_entrada" type="text" id="valoracionRes" disabled>
+                                    <button id="btn_valsRes" (click)="mostrarValoracionesRes()">
+                                        Consultar valoraciones</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato3">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="direccionRes">Dirección *</label>
+                                    <label class="aviso" for="direccionRes">{{ avisoDireccion }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="direccionRes" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="emailRes">Correo *</label>
+                                    <label class="aviso" for="emailRes">{{ avisoEmail }}</label>
+                                </div>
+                                <input class="campo_entrada" type="email" id="emailRes" pattern=".+@globex\.com"
+                                    size="30" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="telRes">Teléfono *</label>
+                                    <label class="aviso" for="telRes">{{ avisoTelefono }}</label>
+                                </div>
+                                <input class="campo_entrada" type="tel" pattern="[0-9]+" id="telRes"
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="30" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carta -->
+                    <div id="carta_v" class="oculto contenedor_datos_rest">
+                        <div class="labels contenedor_horizontal">
+                            <div class="label_lista2">
+                                <h2 class="label_cuadro2">Platos</h2>
+                            </div>
+                            <div class="label_datos2">
+                                <h2 class="label_cuadro2">Datos del Plato</h2>
+                            </div>
+                        </div>
+                        <div class="contenido contenedor_horizontal">
+                            <div class="contenedor_lista_botones">
+                                <div class="contenedor_lista_platos">
+                                    <ul id="listaPlatos" class="listaElementos">
+                                        <li class="elementoBase" *ngFor="let element of listaPlatos"
+                                            (click)="onSelectP(element)">
+                                            <div class="contenedor_horizontal">
+                                                <div class="cont_foto_plato">
+                                                    <img src="{{ element.fotoP }}" alt="">
+                                                </div>
+                                                <div class="cont_titulo_plato">
+                                                    <p>{{ element.nombreP }}</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="contenedor_botones_plato">
+                                    <div class="botones2 contenedor_horizontal">
+                                        <div id="cont_confirm_addP" class="contenedor_horizontal oculto">
+                                            <button (click)="aceptarCambiosCrearCarta()">
+                                                <img id="acept_addP" class="img_icon3"
+                                                    src="../../../assets/ui_images/acept.png" /></button>
+                                            <button (click)="cancelarCambiosCrearP()">
+                                                <img id="cancel_addP" class="img_icon3"
+                                                    src="../../../assets/ui_images/cancel.svg" /></button>
+                                        </div>
+                                        <div id="cont_confirm_udtP" class="contenedor_horizontal oculto">
+                                            <button (click)="aceptarCambiosActualizarCarta()">
+                                                <img id="acept_udtP" class="img_icon3"
+                                                    src="../../../assets/ui_images/acept.png" /></button>
+                                            <button (click)="cancelarCambiosActualizarP()">
+                                                <img id="cancel_udtP" class="img_icon3"
+                                                    src="../../../assets/ui_images/cancel.svg" /></button>
+                                        </div>
+
+                                        <div id="cont_btn_opcP" class="contenedor_horizontal">
+
+                                            <button id="add_plato" (click)="activarCamposCrearP()">
+                                                <img class="img_icon3"
+                                                    src="../../../assets/ui_images/add_icon.svg" /></button>
+                                            <button id="update_plato" class="oculto"
+                                                (click)="activarCamposActualizarP()">
+                                                <img class="img_icon3"
+                                                    src="../../../assets/ui_images/update2_icon.svg" /></button>
+                                            <button id="delete_plato" class="oculto" (click)="eliminarCarta()">
+                                                <img class="img_icon3"
+                                                    src="../../../assets/ui_images/delete_icon.svg" /></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_datos_platos">
+                                <div id="datos_platos">
+                                    <div class="linea_campo contenedor_horizontal">
+                                        <div class="campo_dato3">
+                                            <div class="contenedor_label contenedor_horizontal">
+                                                <label class="texto_gris" for="nombreP">Nombre *</label>
+                                                <label class="aviso" for="nombreP">{{ avisoNombreP }}</label>
+                                            </div>
+                                            <input class="campo_entrada" type="text" id="nombreP" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="linea_campo contenedor_horizontal">
+                                        <div class="campo_dato1">
+                                            <div class="contenedor_label contenedor_horizontal">
+                                                <label class="texto_gris" for="precio">Precio *</label>
+                                                <label class="aviso" for="precio">{{ avisoPrecioP }}</label>
+                                            </div>
+                                            <input class="campo_entrada" type="text" id="precio" disabled>
+                                        </div>
+                                        <div class="campo_dato2">
+                                            <label class="texto_gris" for="vegano">Plato Vegano</label>
+                                            <input class="campo_entrada_check" type="checkbox" id="vegano" disabled>
+                                        </div>
+                                    </div>
+                                    <div id="linea_abajo" class="linea_campo contenedor_horizontal2">
+                                        <div class="campo_dato4">
+                                            <div class="contenedor_label contenedor_horizontal">
+                                                <label class="texto_gris" for="botonFoto">Foto</label>
+                                                <label class="aviso" for="botonFoto">{{ avisoFotoP }}</label>
+                                            </div>
+                                            <img id="fotoPlato" class="campo_entrada_img" [src]="platoFoto" alt="">
+                                            <input (change)="capturarFile($event)" accept=".png" type="file"
+                                                id="botonFoto" disabled>
+                                        </div>
+                                        <div class="campo_dato5">
+                                            <div class="contenedor_label contenedor_horizontal">
+                                                <label class="texto_gris" for="desc">Descripción *</label>
+                                                <label class="aviso" for="desc">{{ avisoDescP }}</label>
+                                            </div>
+                                            <textarea class="campo_entrada_img" id="desc" disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Facturas -->
+                    <div id="facturas_v" class="oculto contenedor_datos_rest">
+                        <div class="contenedor_horizontal linea_campo">
+                            <div class="cont_camp">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="fechaIni">Fecha de Inicio</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="fechaIni">
+                            </div>
+                            <div class="cont_camp">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="fechaFin">Fecha de Fin</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="fechaFin">
+                            </div>
+
+                            <button id="btn_consultFact" (click)="consultarFact()" class="btn">Consultar
+                                Facturación</button>
+                        </div>
+                        <h2 class="desc_fact">La facturación para el periodo especificado es: {{ facturacion }}€</h2>
+                    </div>
+                    <!--Pedidos-->
+                    <div id="pedidos_v" class="oculto contenedor_datos_rest">
+                        <div class="labels contenedor_horizontal">
+                            <div class="label_lista2">
+                                <h2 class="label_cuadro2">Pedidos</h2>
+                            </div>
+                            <div class="label_datos2">
+                                <h2 class="label_cuadro2">Datos del Pedido</h2>
+                            </div>
+                        </div>
+                        <div class="contenido contenedor_horizontal">
+                            <div class="contenedor_lista_botones">
+                                <div id="cont_lista_pedidosRes" class="contenedor_lista_pedidos">
+                                    <ul id="listaPedidos" class="listaElementos">
+                                        <li class="elementoBase" *ngFor="let element of listaPedidosRes" (click)="onSelectPed(element)">
+                                            {{ element.cliente }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="contenedor_datos_pedidos">
+                                <div id="datos_pedidos">
+                                    <div class="linea_campo contenedor_horizontal">
+                                        <div class="campo_dato3">
+                                            <div class="contenedor_label contenedor_horizontal">
+                                                <label class="texto_gris" for="estadoPed">Estado</label>
+                                            </div>
+                                            <input class="campo_entrada" type="text" id="estadoPed" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="linea_campo contenedor_horizontal">
+                                        <div class="campo_dato3">
+                                            <div class="contenedor_label contenedor_horizontal">
+                                                <label class="texto_gris" for="riderPed">Rider</label>
+                                            </div>
+                                            <input class="campo_entrada" type="text" id="riderPed" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_recibo">
+
+                                <div class="contenedor_horizontal linea_campo">
+                                    <img id="bordeRecibo" src="../../../assets/ui_images/borde-recibo2.png" alt="">
+                                    <p class="fechaRecibo">{{ pedidoSel.fecha }}</p>
+                                </div>
+                                
+                                <div class="datosRecibo">
+                                    <h2>Pedido</h2>
+                                    <p>Restaurante: <strong>{{ pedidoSel.restaurante }}</strong></p>
+                                    <p>Cliente: {{ pedidoSel.cliente }}</p>
+                                    <hr>
+                                </div>
+
+                                <div id="platosReciboPedidosRes" class="platosRecibo">
+                                    <ul id="listaPlatosPedido" class="listaElementos">
+                                        <li class="elementoBase" *ngFor="let element of listaPlatosPedidoSel">
+                                            <div class="lineaPlato">
+                                                <p><strong>{{ element.nombreP }}</strong></p>
+                                                <div class="contenedor_horizontal linea_campo">
+                                                    <p>Uds: {{ element.cantidad }}</p>
+                                                    <p><strong>{{ element.precioP }} €</strong></p>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="importeRecibo">
+                                    <hr>
+                                    <div class="contenedor_horizontal linea_campo">
+                                        <p><strong>Importe total: </strong></p>
+                                        <p><strong>{{ pedidoSelTotal }} €</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- valoraciones restaurante -->
+    <div id="contenedor_valoracionesRes" class="cont_valoracion oculto">
+        <div class="contenedor_valorar_pedidos">
+            <div class="contenedor_horizontal cabecera_valorar">
+                <h1>Valoraciones</h1>
+                <button (click)="cerrarVentanaValoracionesRes()">
+                    <img id="cerrarValoraciones" class="img_icon"
+                        src="../../../assets/ui_images/close_icon.svg" /></button>
+            </div>
+            <div class="contenedor_valorar">
+                <h2>Restaurante</h2>
+                <p>{{ restauranteSelect }}</p>
+                <h2>Valoraciones</h2>
+                <div id="contenedor_valsRes" class="contenedor_vals">
+                    <ul>
+                        <li *ngFor="let element of listaValoracionesRes">
+                            <div class="contenedor_val">
+                                <div class="contenedor_horizontal">
+                                    <div class="cont_correo">
+                                        <h4 class="correo_val">{{element.autor}}</h4>
+                                    </div>
+                                    <div class="contenedor_pts contenedor_horizontal">
+                                        <button>
+                                            <img class="img_estrella2"
+                                                src="../../../assets/ui_images/estrella-rellena.png" /></button>
+                                        <h4 class="correo_val"> {{element.valor}}</h4>
+                                    </div>
+                                </div>
+                                <textarea class="campo_entrada_img2" disabled>{{element.comentario}}</textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

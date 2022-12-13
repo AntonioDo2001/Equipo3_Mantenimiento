@@ -1,0 +1,119 @@
+<div class="contenedor_padre">
+
+    <div class="contenedor_login_hijo">
+        <div class="contenedor_header3 contenedor_horizontal">
+            <img class="img_logo2" src="../../../assets/ui_images/logo3.png" alt="">
+            <div class="botones contenedor_horizontal">
+                <div id="cont_confirm_add_a" class="contenedor_horizontal oculto">
+                    <button (click)="aceptarCambiosCrear()">
+                        <img id="acept_add_a" class="img_icon" src="../../../assets/ui_images/acept.png" /></button>
+                    <button (click)="cancelarCambiosCrear()">
+                        <img id="cancel_add_a" class="img_icon" src="../../../assets/ui_images/cancel.svg" /></button>
+                </div>
+                <div id="cont_confirm_udt_a" class="contenedor_horizontal oculto">
+                    <button (click)="aceptarCambiosActualizar()">
+                        <img id="acept_udt_a" class="img_icon" src="../../../assets/ui_images/acept.png" /></button>
+                    <button (click)="cancelarCambiosActualizar()">
+                        <img id="cancel_udt_a" class="img_icon" src="../../../assets/ui_images/cancel.svg" /></button>
+                </div>
+
+                <div id="cont_btn_opc" class="contenedor_horizontal">
+
+                    <button id="add_admin" (click)="activarCamposCrear()">
+                        <img class="img_icon" src="../../../assets/ui_images/add_icon.svg" /></button>
+                    <button id="update_admin" class="oculto" (click)="activarCamposActualizar()">
+                        <img class="img_icon" src="../../../assets/ui_images/update2_icon.svg" /></button>
+                    <button id="delete_admin" class="oculto" (click)="eliminar()">
+                        <img class="img_icon" src="../../../assets/ui_images/delete_icon.svg" /></button>
+                </div>
+
+                <h2 class="sep">|</h2>
+                <button id="logout_admin" (click)="logout()">
+                    <img class="img_icon" src="../../../assets/ui_images/home_icon.svg" /></button>
+            </div>
+        </div>
+        <div class="contenedor_campos">
+            <div class="labels contenedor_horizontal">
+                <div class="label_lista">
+                    <h2 class="label_cuadro">Administradores</h2>
+                </div>
+                <div class="label_datos">
+                    <h2 class="label_cuadro">Datos del Administrador</h2>
+                </div>
+            </div>
+            <div class="contenido contenedor_horizontal">
+                <div class="contenedor_lista">
+                    <ul id="listaAdmins" class="listaElementos">
+                        <li class="elementoBase" *ngFor="let element of listaAdmins" (click)="onSelect(element)">{{
+                            element.nombre }} {{ element.apellidos }}</li>
+                    </ul>
+                </div>
+                <div class="contenedor_datos">
+                    <div id="datos" class="contenedor_datos_rest">
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="nombreA">Nombre *</label>
+                                    <label class="aviso" for="nombreA">{{ avisoNombre }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="nombreA" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="apellidosA">Apellidos *</label>
+                                    <label class="aviso" for="apellidosA">{{ avisoApellidos }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="apellidosA" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="zonaA">Zona *</label>
+                                    <label class="aviso" for="zonaA">{{ avisoZona }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="zonaA" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="nifA">NIF *</label>
+                                    <label class="aviso" for="nifA">{{ avisoNIF }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="nifA" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="emailA">Correo *</label>
+                                    <label class="aviso" for="emailA">{{ avisoCorreo }}</label>
+                                </div>
+                                <input class="campo_entrada" type="email" id="emailA" 
+                                pattern=".+@globex\.com" size="30" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="passwordA">Contraseña *</label>
+                                    <label class="aviso" for="passwordA">{{ avisoPwd }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="passwordA" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="passwordA"> Repite la Contraseña *</label>
+                                    <label class="aviso" for="passwordA2">{{ avisoPwd2 }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="passwordA2" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="contenedor_login_padre">
+    <div class="contenedor_login_hijo">
+        <div class="contenedor_header2 contenedor_horizontal">
+            <a routerLink="/inicio">
+                <img class="img_logo" src="../../assets/ui_images/logo3.png" alt="" />
+            </a>
+            <a routerLink="/inicio">
+                <img id="logout" class="img_logout" src="../../../assets/ui_images/home_icon.svg" />
+            </a>
+        </div>
+        <div class="contenedor_campos">
+            <h1 class="texto_gris">Iniciar Sesión</h1>
+            <div class="contenedor_label contenedor_horizontal">
+                <label class="texto_gris" for="email">Usuario</label>
+                <label class="aviso" for="email">{{ avisoEmail }}</label>
+            </div>
+            <input class="campo_entrada" type="email" id="email" pattern=".+@globex\.com" size="30">
+            <div class="contenedor_label contenedor_horizontal">
+                <label class="texto_gris" for="password">Contraseña</label>
+                <label class="aviso" for="password">{{ avisoPwd }}</label>
+            </div>
+            <input class="campo_entrada" type="password" id="password" pattern=".{6,}">
+            <div class="contenedor_acceder">
+                <button (click)="acceder()" id="btn_acceder" class="btn_acceder">Acceder</button>
+            </div>
+            <div class="contenedor_horizontal registro">
+                <p class="o_sep">o</p>
+                <a routerLink="/registro" class="registro">Registrarse</a>
+            </div>
+        </div>
+    </div>
+</div>

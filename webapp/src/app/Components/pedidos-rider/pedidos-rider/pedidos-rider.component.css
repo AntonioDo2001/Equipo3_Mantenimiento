@@ -1,0 +1,49 @@
+.contenedor_login_padre {
+    min-height: 100vh;
+    /*background: url(../../../assets/bg_images/food_bg2.jpg);*/
+    background: url(/assets/bg_images/food_bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_grupo {
+    /*background: white;*/
+    width: 100%;
+    margin: 20px;
+}
+
+.contenedor_gestion {
+    background: white;
+    height: 560px;
+}
+
+.contenedor_modulos {
+    /*background: orange;*/
+    height: 50px;
+    justify-content: space-around;
+}
+
+.btn_module {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    height: 50px;
+    width: 150px;
+    margin-bottom: 24px;
+    border: 3px solid #424242;
+    border-radius: 10px;
+}
+
+.bg_blue {
+    background: rgba(25, 196, 255, 0.85);
+}
+
+.bg_blue:hover {
+    background: rgba(25, 196, 255, 1);
+}

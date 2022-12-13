@@ -1,0 +1,182 @@
+<div class="contenedor_login_padre">
+    <div class="contenedor_login_hijo">
+        <div class="contenedor_header3 contenedor_horizontal">
+            <img class="img_logo2" src="../../../assets/ui_images/logo3.png" alt="">
+            <div class="botones contenedor_horizontal">
+                <div id="cont_confirm_add_r" class="contenedor_horizontal oculto">
+                    <button (click)="aceptarCambiosCrear()">
+                        <img id="acept_add_r" class="img_icon" src="../../../assets/ui_images/acept.png" /></button>
+                    <button (click)="cancelarCambiosCrear()">
+                        <img id="cancel_add_r" class="img_icon" src="../../../assets/ui_images/cancel.svg" /></button>
+                </div>
+                <div id="cont_confirm_udt_r" class="contenedor_horizontal oculto">
+                    <button (click)="aceptarCambiosActualizar()">
+                        <img id="acept_udt_r" class="img_icon" src="../../../assets/ui_images/acept.png" /></button>
+                    <button (click)="cancelarCambiosActualizar()">
+                        <img id="cancel_udt_r" class="img_icon" src="../../../assets/ui_images/cancel.svg" /></button>
+                </div>
+
+                <div id="cont_btn_opc" class="contenedor_horizontal">
+
+                    <button id="add_rider" (click)="activarCamposCrear()">
+                        <img class="img_icon" src="../../../assets/ui_images/add_icon.svg" /></button>
+                    <button id="update_rider" class="oculto" (click)="activarCamposActualizar()">
+                        <img class="img_icon" src="../../../assets/ui_images/update2_icon.svg" /></button>
+                    <button id="delete_rider" class="oculto" (click)="eliminar()">
+                        <img class="img_icon" src="../../../assets/ui_images/delete_icon.svg" /></button>
+                </div>
+
+                <h2 class="sep">|</h2>
+                <button id="logout_rider" (click)="logout()">
+                    <img class="img_icon" src="../../../assets/ui_images/home_icon.svg" /></button>
+            </div>
+        </div>
+        <div class="contenedor_campos">
+            <div class="labels contenedor_horizontal">
+                <div class="label_lista">
+                    <h2 class="label_cuadro">Riders</h2>
+                </div>
+                <div class="label_datos">
+                    <h2 class="label_cuadro">Datos del Rider</h2>
+                </div>
+            </div>
+            <div class="contenido contenedor_horizontal">
+                <div class="contenedor_lista">
+                    <ul id="listaRiders" class="listaElementos">
+                        <li class="elementoBase" *ngFor="let element of listaRiders" (click)="onSelect(element)">{{
+                            element.nombre }}</li>
+                    </ul>
+                </div>
+                <div class="contenedor_datos">
+                    <div id="datos" class="contenedor_datos_rest">
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="nombreR">Nombre *</label>
+                                    <label class="aviso" for="nombreR">{{ avisoNombre }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="nombreR" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="apellidosR">Apellidos *</label>
+                                    <label class="aviso" for="apellidosR">{{ avisoApellidos }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="apellidosR" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="nifR">NIF *</label>
+                                    <label class="aviso" for="nifR">{{ avisoNIF }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="nifR" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <label class="texto_gris" for="valoracionR">Valoración</label>
+                                <div class="contenedor_horizontal">
+                                    <input class="campo_entrada" type="text" id="valoracionR" disabled>
+                                    <button id="btn_vals" (click)="mostrarValoracionesRid()">
+                                        Consultar valoraciones</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="emailR">Correo *</label>
+                                    <label class="aviso" for="emailR">{{ avisoCorreo }}</label>
+                                </div>
+                                <input class="campo_entrada" type="email" id="emailR" pattern=".+@globex\.com" size="30"
+                                    disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="passwordR">Contraseña *</label>
+                                    <label class="aviso" for="passwordR">{{ avisoPwd }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="passwordR" disabled>
+                            </div>
+                            <div class="campo_dato6">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="activoR">Cuenta Activa</label>
+                                </div>
+                                <input class="campo_entrada_check" type="checkbox" id="activoR" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo campo_dato3">
+                            <div class="contenedor_label contenedor_horizontal">
+                                <label class="texto_gris" for="cocheR">Tipo de vehículo *</label>
+                                <label class="aviso" for="cocheR">{{ avisoTipoVeh }}</label>
+                            </div>
+                            <div class="campo_radio campo_entrada">
+                                <label><input type="radio" name="tipoVehiculo" id="cocheR" value="coche" disabled>
+                                    Coche</label>
+                                <label><input type="radio" name="tipoVehiculo" id="motoR" value="moto" disabled>
+                                    Moto</label>
+                                <label><input type="radio" name="tipoVehiculo" id="biciR" value="bici" disabled>
+                                    Bicicleta</label>
+                                <label><input type="radio" name="tipoVehiculo" id="patineteR" value="patinete" disabled>
+                                    Patinete</label>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="matriculaR">Matrícula</label>
+                                    <label class="aviso" for="matriculaR">{{ avisoMatricula }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="matriculaR" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="carnetR">Carnet</label>
+                                    <label class="aviso" for="carnetR">{{ avisoCarnet }}</label>
+                                </div>
+                                <input class="campo_entrada_check" type="checkbox" id="carnetR" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- valoraciones restaurante -->
+    <div id="contenedor_valoracionesRid" class="cont_valoracion oculto">
+        <div class="contenedor_valorar_pedidos">
+            <div class="contenedor_horizontal cabecera_valorar">
+                <h1>Valoraciones</h1>
+                <button (click)="cerrarVentanaValoracionesRid()">
+                    <img id="cerrarValoraciones" class="img_icon"
+                        src="../../../assets/ui_images/close_icon.svg" /></button>
+            </div>
+            <div class="contenedor_valorar">
+                <h2>Rider</h2>
+                <p>{{ riderSelected }}</p>
+                <h2>Valoraciones</h2>
+                <div id="contenedor_valsRid" class="contenedor_vals">
+                    <ul>
+                        <li *ngFor="let element of listaValoracionesRid">
+                            <div class="contenedor_val">
+                                <div class="contenedor_horizontal">
+                                    <div class="cont_correo">
+                                        <h4 class="correo_val">{{element.autor}}</h4>
+                                    </div>
+                                    <div class="contenedor_pts contenedor_horizontal">
+                                        <button>
+                                            <img class="img_estrella2"
+                                                src="../../../assets/ui_images/estrella-rellena.png" /></button>
+                                        <h4 class="correo_val"> {{element.valor}}</h4>
+                                    </div>
+                                </div>
+                                <textarea class="campo_entrada_img" disabled>{{element.comentario}}</textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

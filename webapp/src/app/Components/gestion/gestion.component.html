@@ -1,0 +1,20 @@
+<div class="contenedor_login_padre">
+    <div class="contenedor_grupo">
+        <div class="contenedor_modulos contenedor_horizontal">
+            <button (click)="mostrarAdmins()" id="g_admins_btn"
+                class="btn_module bg_red oculto">Administradores</button>
+            <button (click)="mostrarClientes()" id="g_clientes_btn"
+                class="btn_module bg_orange oculto">Clientes</button>
+            <button (click)="mostrarRiders()" id="g_riders_btn" 
+            class="btn_module bg_yellow oculto">Riders</button>
+            <button (click)="mostrarRestaurantes()" id="g_restaurantes_btn"
+                class="btn_module bg_green oculto">Restaurantes</button>
+        </div>
+        <div class="contenedor_gestion">
+            <app-gestion-admins id="g_admins" class="oculto"></app-gestion-admins>
+            <app-gestion-clientes id="g_clientes" class="oculto"></app-gestion-clientes>
+            <app-gestion-riders id="g_riders" class="oculto"></app-gestion-riders>
+            <app-gestion-restaurantes id="g_restaurantes" class="oculto"></app-gestion-restaurantes>
+        </div>
+    </div>
+</div>

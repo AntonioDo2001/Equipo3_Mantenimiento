@@ -1,0 +1,82 @@
+.contenedor_login_padre {
+    min-height: 100vh;
+    background: url(../../../assets/bg_images/food2_bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_campos {
+    padding: 8px 16px;
+    border: 5px solid #424242;
+    padding-bottom: 16px;
+}
+
+.contenedor_campos h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.contenedor_label {
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.btn_paso {
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fc8a15;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 16px;
+    border: 3px solid #fc8a15;
+    background: white;
+}
+
+.o_sep {
+    margin-right: 8px;
+}
+
+a {
+    color: #fc8a15;
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: auto;
+}
+
+li {
+    height: 35px;
+    line-height: 30px;
+
+    float: left;
+    margin-right: 10px;
+    padding: 2px;
+    font-size: 2.5rem;
+}
+
+.contenedor_pasos {
+    display: flex;
+    margin-top: -45px;
+}
+
+.ancho_partido {
+    width: 49.5%;
+}
+
+.contenedor_acceder {
+    justify-content: space-between;
+}
+
+.transparente {
+    visibility: hidden;
+}

@@ -1,0 +1,440 @@
+.portada {
+    padding-top: 90px;
+    background: url(../../../assets/bg_images/food_bg3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    appearance: none;
+    border-color: transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+.contenedor_listaRest {
+    width: 30%;
+    height: 450px;
+    padding: 24px 8px 8px 8px;
+    border-right: #757575;
+    overflow-y: scroll;
+}
+
+.contenedor_listaRest ul li {
+    background: #f5f5f5;
+    border-radius: 5px;
+    height: 30px;
+    margin-bottom: 4px;
+    padding: 6px;
+    font-size: 1rem;
+}
+
+.contenedor_listaRest ul li:hover {
+    background: #e5e5e5;
+}
+
+.label_listaRest {
+    width: 30%;
+}
+
+.label_listaCarta {
+    width: 70%;
+}
+
+.contenedor_listaCarta {
+    width: 70%;
+    height: 450px;
+    padding: 24px 8px 8px 8px;
+    overflow-y: scroll;
+}
+
+.contenedor_listaCarta ul li {
+    margin: 8px;
+}
+
+.contenedor_listaCarta2 {
+    width: 70%;
+    height: 350px;
+    padding: 24px 8px 8px 8px;
+    overflow-y: scroll;
+}
+
+.contenedor_listaCarta2 ul li {
+    margin: 8px;
+}
+
+.contenedorSep {
+    background: #757575;
+    width: 3px;
+}
+
+.label_cuadroPedir {
+    
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 4px;
+    width: fit-content;
+    margin-left: 10px;
+    z-index: 100;
+    color: #fff;
+}
+
+.img_iconCarta {
+    height: 25px;
+    width: 25px;
+}
+
+.contenedor_precioBotones {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.card_plato {
+    padding: 8px;
+    width: 250px;
+    height: 300px;
+    background: RGBA(245, 245, 245, 0.80);
+    border-radius: 10px;
+}
+
+.card_plato:hover {
+    background: #f5f5f5;
+}
+
+.cont_foto {
+    width: 230px;
+    height: 230px;
+    display: flex;
+}
+
+.card_plato .fotoPlatoP {
+    width: 230px;
+    max-height: 230px;
+    margin: auto 0;
+}
+
+.par_btn {
+    width: 60px;
+}
+
+.par_btn2 {
+    width: 90px;
+    justify-content: space-between;
+}
+
+#listaCartaPedCli, #listaPlatosPedCli {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+}
+
+.contenedor_listaCarta::-webkit-scrollbar,
+.contenedor_listaCarta2::-webkit-scrollbar,
+#cont_lista_pedPend::-webkit-scrollbar,
+.contenedor_listaRest::-webkit-scrollbar,
+.contenedor_lista_pedidos::-webkit-scrollbar,
+.contenedor_valorar::-webkit-scrollbar,
+.contenedor_valorar2::-webkit-scrollbar {
+    border-radius: 2px;
+	width: 6px;
+	background-color: #42424270;
+}
+
+.contenedor_listaCarta::-webkit-scrollbar-thumb, 
+.contenedor_listaCarta2::-webkit-scrollbar-thumb,
+#cont_lista_pedPend::-webkit-scrollbar-thumb,
+.contenedor_listaRest::-webkit-scrollbar-thumb,
+.contenedor_lista_pedidos::-webkit-scrollbar-thumb,
+.contenedor_valorar::-webkit-scrollbar-thumb,
+.contenedor_valorar2::-webkit-scrollbar-thumb {
+    background-color: #f5f5f5;
+}
+
+
+
+.contenedor_lista_pedidos {
+    
+    width: 33%;
+    height: 340px;
+    border: 3px solid #757575;
+    padding: 24px 8px 8px 8px;
+    margin: 0 2px;
+    overflow-y: scroll;
+}
+
+
+.contenedor_lista_pedidos ul li {
+    background: white;
+    border-radius: 5px;
+    height: 40px;
+    margin-bottom: 4px;
+    padding: 6px;
+    font-size: 1rem;
+}
+
+.contenedor_lista_pedidos ul li:hover {
+    background: #e5e5e5;
+}
+
+.contenedor_recibo {
+    background: #fae8d1;
+    width: 100%;
+    height: 345px;
+    border: 3px solid #fff;
+}
+
+.contenedor_recibo h2 {
+    
+    text-align: center;
+    margin: 8px;
+}
+
+#bordeRecibo {
+    height: 25px;
+    width: 25px;
+}
+
+.datosRecibo {
+    padding: 0 16px 8px 16px;
+}
+
+.platosRecibo {
+    
+    padding: 0 16px 8px 16px;
+    height: 175px;
+}
+
+.importeRecibo {
+    
+    padding: 0 16px 8px 16px;
+}
+
+hr {
+    margin: 4px 0;
+}
+
+.contenedor_pedir, #contenedor_carrito, 
+#contenedor_pedidos, #contenedor_usuario{
+    width: 100%;
+}
+
+.contenedor_datos2{
+    background: white;
+    width: 90%;
+    height: 450px;
+    margin: 0 auto;
+    border: 3px solid #757575;
+    padding: 24px 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    
+}
+
+.columna_recibo{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+}
+
+#btn_cancelarPed{
+    position: absolute;
+    top: 60px;
+    right: 110px;
+    width: 150px;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    color: white;
+    line-height: 35px;
+    border: 3px solid #fc8a15;
+    background: #fc8a15;
+    border-radius: 5px;
+}
+
+#btn_ordenarPedCarr{
+    width: 50%;
+    height: 40px;
+    margin: 4px 0 0 2px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    color: white;
+    line-height: 35px;
+    border: 3px solid #fc8a15;
+    background: #fc8a15;
+    border-radius: 5px;
+}
+
+#btn_cancelarPedCarr{
+    width: 50%;
+    height: 40px;
+    margin: 4px 2px 0 0;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    color: #fc8a15;
+    line-height: 35px;
+    border: 3px solid #fc8a15;
+    background: white;
+    border-radius: 5px;
+}
+
+#btn_subCant{
+    background: #fc8a15;
+    border-radius: 2px;
+    padding: 1px;
+}
+
+#btn_addCant{
+    background: #fc8a15;
+    border-radius: 2px;
+    padding: 1px;
+}
+
+.cant{
+    margin: 0 4px;
+}
+
+.texto_naranja{
+    color: #fc8a15;
+}
+
+#cont_lista_pedPend{
+    width: 100%;
+    height: 300px;
+}
+
+.estrella_vacia{
+    background-image: url(../../../assets/ui_images/estrella-vacia.png);
+}
+
+.estrella_rellena{
+    background-image: url(../../../assets/ui_images/estrella-rellena.png);
+}
+
+.img_estrella{
+    width: 40px;
+    height: 40px;
+}
+
+.img_estrella2{
+    width: 20px;
+    height: 20px;
+}
+
+.correo_val{
+    color: #757575;
+    font-size: 1rem;
+}
+
+.cont_correo{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.contenedor_pts{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.contenedor_val{
+    
+    width: 100%;
+}
+
+.contenedor_vals{
+    height: 395px;
+}
+
+.rank{
+    font-size: 5rem;
+}
+
+.contenedor_estrellas{
+    margin: 0 auto 8px auto;
+    width: 220px;
+}
+
+#btn_enviarValRes, #btn_enviarValRid, #btn_udp_datosCli{
+    width: 150px;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    color: white;
+    line-height: 35px;
+    border: 3px solid #fc8a15;
+    background: #fc8a15;
+    border-radius: 5px;
+}
+
+.linea_btn{
+    width: 100%;
+    display: flex;
+}
+
+.btn_valoracion_list, .btn_valorar_ped{
+    background: #fc8a15;
+    color: white;
+    border-radius: 2px;
+}
+
+#head_datosCli{
+    margin-bottom: 16px;
+}
+
+.centrado{
+    display: flex;
+    justify-content: center;
+}
+
+#cont_confirm_udt_cli{
+    width: 120px;
+}
+
+.campo_entrada_img {
+    width: 100%;
+    object-fit: contain;
+    border: 3px solid #757575;
+    font-size: 1rem;
+    background: white;
+    overflow: hidden;
+}
+
+#btn_enviarValRes, #btn_enviarValRid{
+    margin: 0 auto;
+}
+
+.contenedor_valorar{
+    height: 241px;
+    overflow-y: scroll;
+    margin: 4px;
+    background: #f5f5f5;
+}
+
+.contenedor_valorar2{
+    height: 490px;
+    overflow-y: scroll;
+    margin: 4px;
+    background: #f5f5f5;
+    padding: 4px 16px;
+}
+
+.img_estrella:hover{
+    height: 35px;
+    width: 35px;
+}

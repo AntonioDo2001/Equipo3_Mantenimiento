@@ -1,0 +1,108 @@
+<div class="contenedor_login_padre">
+    <div class="contenedor_login_hijo">
+        <div class="contenedor_header3 contenedor_horizontal">
+            <img class="img_logo2" src="../../../assets/ui_images/logo3.png" alt="">
+            <div class="botones contenedor_horizontal">
+                <div id="cont_btn_opc" class="contenedor_horizontal">
+
+                    <button id="recargar_ped" (click)="recargar()">
+                        <img class="img_icon" src="../../../assets/ui_images/update2_icon.svg" /></button>
+                    <button id="asignar_ped" (click)="asignar_ped()" class="oculto">
+                        <img class="img_icon" src="../../../assets/ui_images/asignar-pedido-icon2.png" /></button>
+                    <button id="entregar_ped" (click)="entregar_ped()" class="oculto">
+                        <img class="img_icon" src="../../../assets/ui_images/entregar-icon.png" /></button>
+                </div>
+
+                <h2 class="sep">|</h2>
+                <button id="logout_ped" (click)="logout()">
+                    <img class="img_icon" src="../../../assets/ui_images/home_icon.svg" /></button>
+            </div>
+        </div>
+        <div class="contenedor_campos">
+            <div class="labels contenedor_horizontal">
+                <div class="label_lista">
+                    <h2 class="label_cuadro">Restaurantes</h2>
+                </div>
+                <div class="label_datos">
+                    <h2 class="label_cuadro">Pedidos</h2>
+                </div>
+            </div>
+            <div class="contenido contenedor_horizontal">
+                <div class="contenedor_lista">
+                    <ul id="listaRestaurantesPed" class="listaElementos">
+                        <li class="elementoBase" *ngFor="let element of listaRestaurantes" (click)="onSelect(element)">
+                            {{ element.nombre }}</li>
+                    </ul>
+                </div>
+                <div class="contenedor_datos">
+                    <div class="labels contenedor_horizontal">
+                        <div class="label_lista3">
+                            <h2 class="label_cuadro">En preparación</h2>
+                        </div>
+                        <div class="label_lista3">
+                            <h2 class="label_cuadro">Por repartir</h2>
+                        </div>
+                        <div class="label_lista3"></div>
+                    </div>
+                    <div class="contenido contenedor_horizontal contenedor_label">
+                        
+                        <div class="contenedor_lista_pedidos">
+                            <ul id="listaPedidosPreparacion" class="listaElementos">
+                                <li class="elementoBase" *ngFor="let element of listaPedidosPreparacion" (click)="onSelectPedPrep(element)">
+                                    {{ element.cliente }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="contenedor_lista_pedidos">
+                            <ul id="listaPedidosRepartir" class="listaElementos">
+                                <li class="elementoBase" *ngFor="let element of listaPedidosRepartir" (click)="onSelectPedRep(element)">
+                                    {{ element.cliente }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="contenedor_recibo">
+                            <div class="contenedor_horizontal linea_campo">
+                                <img id="bordeRecibo" src="../../../assets/ui_images/borde-recibo.png" alt="">
+                                <p class="fechaRecibo">{{ pedidoSel.fecha }}</p>
+                            </div>
+                            
+                            <div class="datosRecibo">
+                                <h2>Pedido</h2>
+                                <p>Restaurante: <strong>{{ pedidoSel.restaurante }}</strong></p>
+                                <p>Cliente: {{ pedidoSel.cliente }}</p>
+                                <hr>
+                            </div>
+                            <div class="platosRecibo">
+                                <ul id="listaPlatosPedido" class="listaElementos">
+                                    <li class="elementoBase" *ngFor="let element of listaPlatosPedidoSel">
+                                        <div class="lineaPlato">
+                                            <p><strong>{{ element.nombreP }}</strong></p>
+                                            <div class="contenedor_horizontal linea_campo">
+                                                <p>Uds: {{ element.cantidad }}</p>
+                                                <p><strong>{{ element.precioP }} €</strong></p>
+                                            </div>
+                                            
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="importeRecibo">
+                                <hr>
+                                <div class="contenedor_horizontal linea_campo">
+                                    <p><strong>Importe total: </strong></p>
+                                    <p><strong>{{ pedidoSelTotal }} €</strong></p>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

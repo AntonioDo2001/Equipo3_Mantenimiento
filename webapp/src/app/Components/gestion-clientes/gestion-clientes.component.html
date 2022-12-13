@@ -1,0 +1,113 @@
+<div class="contenedor_login_padre">
+    <div class="contenedor_login_hijo">
+        <div class="contenedor_header3 contenedor_horizontal">
+            <img class="img_logo2" src="../../../assets/ui_images/logo3.png" alt="">
+            <div class="botones contenedor_horizontal">
+                <div id="cont_confirm_udt_c" class="contenedor_horizontal oculto">
+                    <button (click)="aceptarCambiosActualizar()">
+                        <img id="acept_udt_c" class="img_icon" src="../../../assets/ui_images/acept.png" /></button>
+                    <button (click)="cancelarCambiosActualizar()">
+                        <img id="cancel_udt_c" class="img_icon" src="../../../assets/ui_images/cancel.svg" /></button>
+                </div>
+
+                <div id="cont_btn_opc" class="contenedor_horizontal">
+
+                    <button id="update_clientes" class="oculto" (click)="activarCamposActualizar()">
+                        <img class="img_icon" src="../../../assets/ui_images/update2_icon.svg" /></button>
+                    <button id="delete_clientes" class="oculto" (click)="eliminar()">
+                        <img class="img_icon" src="../../../assets/ui_images/delete_icon.svg" /></button>
+                </div>
+
+                <h2 class="sep">|</h2>
+                <button id="logout_clientes" (click)="logout()">
+                    <img class="img_icon" src="../../../assets/ui_images/home_icon.svg" /></button>
+            </div>
+        </div>
+        <div class="contenedor_campos">
+            <div class="labels contenedor_horizontal">
+                <div class="label_lista">
+                    <h2 class="label_cuadro">Clientes</h2>
+                </div>
+                <div class="label_datos">
+                    <h2 class="label_cuadro">Datos del Cliente</h2>
+                </div>
+            </div>
+            <div class="contenido contenedor_horizontal">
+                <div class="contenedor_lista">
+                    <ul id="listaClientes" class="listaElementos">
+                        <li class="elementoBase" *ngFor="let element of listaClientes" (click)="onSelect(element)">{{
+                            element.nombre }} {{ element.apellidos }}</li>
+                    </ul>
+                </div>
+                <div class="contenedor_datos">
+                    <div id="datos" class="contenedor_datos_rest">
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="nombreC">Nombre *</label>
+                                    <label class="aviso" for="nombreC">{{ avisoNombre }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="nombreC" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="apellidosC">Apellidos *</label>
+                                    <label class="aviso" for="apellidosC">{{ avisoApellidos }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="apellidosC" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="nifC">NIF *</label>
+                                    <label class="aviso" for="nifC">{{ avisoNIF }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="nifC" disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="telC">Teléfono *</label>
+                                    <label class="aviso" for="telC">{{ avisoTel }}</label>
+                                </div>
+                                <input class="campo_entrada" type="tel" id="telC" size="9" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato4">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="emailC">Correo *</label>
+                                    <label class="aviso" for="emailC">{{ avisoCorreo }}</label>
+                                </div>
+                                <input class="campo_entrada" type="email" id="emailC" pattern=".+@globex\.com" size="30"
+                                    disabled>
+                            </div>
+                            <div class="campo_dato5">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="passwordC">Contraseña *</label>
+                                    <label class="aviso" for="passwordC">{{ avisoPwd }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="passwordC" disabled>
+                            </div>
+                            <div class="campo_dato6">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="activaC">Cuenta Activa</label>
+                                </div>
+                                <input class="campo_entrada_check" type="checkbox" id="activaC" disabled>
+                            </div>
+                        </div>
+                        <div class="linea_campo contenedor_horizontal">
+                            <div class="campo_dato3">
+                                <div class="contenedor_label contenedor_horizontal">
+                                    <label class="texto_gris" for="direccionC">Dirección *</label>
+                                    <label class="aviso" for="direccionC">{{ avisoDireccion }}</label>
+                                </div>
+                                <input class="campo_entrada" type="text" id="direccionC" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+.portada{
+    padding-top: 90px;
+    background: url(../../../assets/bg_images/food3_bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_flecha{
+    width: 50px;
+}
+
+.info {
+    min-height: 100vh;
+}
+
+.contenedor_descripcion{
+    /*background: red;*/
+    width: 100%;
+    padding: 100px;
+    min-height: 100vh;
+}
+
+.contenedor_texto{
+    /*background: green;*/
+    width: 50%;
+    margin: 0 25px;
+}
+
+.contenedor_texto h1{
+    margin: 24px 0;
+    font-size: 3rem;
+    color: #fc8a15;
+}
+
+.contenedor_texto h2{
+    margin: 24px 0;
+    text-align: justify;
+    font-size: 1.5rem;
+    color: #424242;
+}
+
+.contenedor_texto p{
+    margin: 8px 0;
+    text-align: justify;
+    font-size: 1rem;
+}
+
+.contenedor_imagen{
+    /*background: yellow;
+    width: 50%;*/
+    display: flex;
+    justify-items: center;
+}
+
+.contenedor_imagen img{
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 800px){
+    .contenedor_descripcion {
+        flex-direction: column;
+    }
+
+    .contenedor_texto {
+        width: 70%;
+        margin-bottom: 24px;
+    }
+
+    .trabajo h2{
+        font-size: 0.2rem;
+    }
+}
+
+.trabajo {
+    width: 250px;
+    margin: 0 10px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trabajo:hover{
+    background: #eBeBeB;
+}
+
+.trabajo h2{
+    margin: 16px 0 0 0;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #424242;
+}
+
+.trabajo p{
+    margin: 8px 0;
+    text-align: justify;
+    font-size: 1rem;
+    padding: 16px;
+}
+
+.trabajo img{
+    height: 150px;
+    width: 150px;
+    margin: 16px auto 0 auto;
+    /*background: yellow;*/
+}
+
+.contenedor_trabajos{
+    /*background: green;*/
+    width: 70%;
+    margin: 0 auto 50px auto;
+    justify-content: space-between;
+    height: 50vh;
+}
+
+.info h3{
+    font-size: 1rem;
+    text-align: center;
+    color: #424242;
+    margin-bottom: 70px;
+}
