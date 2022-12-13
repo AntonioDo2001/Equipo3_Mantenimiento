@@ -55,9 +55,7 @@ export class GestionAdminsComponent implements OnInit {
           } else {
             var listaResJSON = data.split(";");
             for (let i = 0; i < listaResJSON.length; i++) {
-              //console.log(listaResJSON[i]);
               this.listaAdmins.push(new Admin(listaResJSON[i],i))
-              console.log(this.listaAdmins[i]);
             }
           }
         }
@@ -277,12 +275,10 @@ export class GestionAdminsComponent implements OnInit {
       "correoAcceso": window.sessionStorage.getItem('correo'),
       "passwordAcceso": window.sessionStorage.getItem('password')
     };
-    console.log(body);
     
 
     let url = this.URL + 'user/actualizarUsuario/';
     url += correo;
-    console.log(url);
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
         if (data.includes("No tienes acceso a este servicio")) {
@@ -351,7 +347,6 @@ export class GestionAdminsComponent implements OnInit {
 
   onSelect(element: Admin) {
     this.disabledTodos(true);
-    console.log(element);
 
     this.funciones.apagarElementosLista('listaAdmins');
     this.funciones.resaltarElementoLista('listaAdmins', element.pos);

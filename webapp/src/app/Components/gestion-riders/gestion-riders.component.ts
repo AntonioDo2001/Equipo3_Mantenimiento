@@ -62,9 +62,7 @@ export class GestionRidersComponent implements OnInit {
           } else {
             var listaResJSON = data.split(";");
             for (let i = 0; i < listaResJSON.length; i++) {
-              //console.log(listaResJSON[i]);
               this.listaRiders.push(new Rider(listaResJSON[i], i))
-              console.log(this.listaRiders[i]);
             }
           }
         }
@@ -444,7 +442,6 @@ export class GestionRidersComponent implements OnInit {
 
   onSelect(element: Rider) {
     this.disabledTodos(true);
-    console.log(element);
     this.riderSelected = element.nombre;
     this.riderSelectCorreo = element.correo;
     this.cerrarVentanaValoracionesRid();
@@ -511,14 +508,12 @@ export class GestionRidersComponent implements OnInit {
         "passwordAcceso": window.sessionStorage.getItem('password')
       };
 
-      console.log(body);
       
 
       const url = this.URL + 'pedido/consultarValoracionRiderMedia';
       this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
         next: data => {
-          console.log("DATOS:")
-          console.log(data);
+
 
           if (data.includes("El rider no tiene valoraciones")) {
             this.funciones.asignarValorID('valoracionR', "0.0");
@@ -528,7 +523,6 @@ export class GestionRidersComponent implements OnInit {
           }
         }, error: error => {
           alert("Ha ocurrido un error al cargar la valoración del rider");
-          console.log(error.message);
         }
       });
     } else {
@@ -565,7 +559,6 @@ export class GestionRidersComponent implements OnInit {
           for (let i = 0; i < listaValJSON.length; i++) {
             let valoracion = new Valoracion(listaValJSON[i], i);
             this.listaValoracionesRid.push(valoracion);
-            console.log(this.listaValoracionesRid[i]);
 
           }
         };

@@ -68,10 +68,8 @@ export class PedidosClientesComponent implements OnInit {
         } else {
           var listaResJSON = data.split(";");
           for (let i = 0; i < listaResJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             var rest = new Restaurante(listaResJSON[i], i);
             this.listaRestaurantes.push(rest)
-            console.log(this.listaRestaurantes[i]);
           }
           this.asignarValoracion();
         }
@@ -91,7 +89,6 @@ export class PedidosClientesComponent implements OnInit {
       const url = this.URL + 'food/getCarta/' + this.restauranteSel;
       this.http.get(url, { headers, responseType: 'text' }).subscribe({
         next: data => {
-          //console.log(data);
 
           this.listaPlatos = [];
           if (data.length == 0) {
@@ -100,9 +97,7 @@ export class PedidosClientesComponent implements OnInit {
           } else {
             var listaCartaJSON = data.split(";;");
             for (let i = 0; i < listaCartaJSON.length; i++) {
-              //console.log(listaResJSON[i]);
               this.listaPlatos.push(new Plato(listaCartaJSON[i], i))
-              console.log(this.listaPlatos[i]);
             }
           }
         }, error: error => {
@@ -127,7 +122,6 @@ export class PedidosClientesComponent implements OnInit {
     const url = this.URL + 'pedido/consultarPedidosCliente';
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
-        console.log(data);
         this.listaPedidosEnProgreso = [];
         this.listaPedidosEntregados = [];
 
@@ -143,7 +137,6 @@ export class PedidosClientesComponent implements OnInit {
           let posProg = 0;
           let posEnt = 0;
           for (let i = 0; i < listaPedJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             let pedido = new Pedido(0, listaPedJSON[i], 0);
             if (pedido.estado == 2) {
               pedido.pos = posEnt;
@@ -183,7 +176,6 @@ export class PedidosClientesComponent implements OnInit {
   }
 
   onSelectPedEnt(element: Pedido) {
-    console.log(element);
     this.pedidoSel = element;
     this.funciones.ocultarBtn('btn_cancelarPed', true);
 
@@ -203,9 +195,6 @@ export class PedidosClientesComponent implements OnInit {
     
 
     this.pedidoSel = element;
-    console.log(element);
-    console.log(this.listaPlatosPedidoSel);
-
     this.funciones.ocultarBtn('btn_cancelarPed', false);
 
     
@@ -213,7 +202,6 @@ export class PedidosClientesComponent implements OnInit {
     this.funciones.apagarElementosLista('listaPedidosEntregados');
     this.funciones.resaltarElementoLista('listaPedidosEnProgreso', element.pos);
 
-    // console.log(element);
     // this.pedidoSel = element;
     // this.funciones.ocultarBtn('btn_cancelarPed', false);
 
@@ -230,8 +218,7 @@ export class PedidosClientesComponent implements OnInit {
     this.listaPlatosPedidoSel = [];
     this.listaPlatosPedidoSel = this.funciones.genPlatosPedido(element, element.restaurante);
     this.pedidoSel = element;
-    console.log(element);
-    console.log(this.listaPlatosPedidoSel);
+
     
     this.funciones.apagarElementosLista('listaPedidosPendientes');
     this.funciones.resaltarElementoLista('listaPedidosPendientes', element.pos);
@@ -308,8 +295,7 @@ export class PedidosClientesComponent implements OnInit {
       let linea = new LineaPlato(element.nombreP,
         String(element.precioP), String(1), this.restauranteSel);
       linea.foto = element.fotoP;
-      console.log(linea);
-      console.log(element);
+
       this.funciones.addLineaPlatoPedido(pedidoAux, linea);
 
       this.listaPedidosPendientes.push(pedidoAux);
@@ -335,7 +321,6 @@ export class PedidosClientesComponent implements OnInit {
   }
 
   disminuirCantidadPlatoPed(element: LineaPlato) {
-    console.log(this.listaPlatosPedidoSel);
     if (Number(element.cantidad) > 1) {
       element.cantidad = String(Number(element.cantidad) - 1);
     }
@@ -391,7 +376,6 @@ export class PedidosClientesComponent implements OnInit {
     const url = this.URL + 'pedido/crearPedido/';
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
-        console.log(data);
         if (data.includes("No tienes acceso a este servicio")) {
           alert("No tienes acceso a este servicio");
           this.router.navigate(['/login']);
@@ -450,7 +434,6 @@ export class PedidosClientesComponent implements OnInit {
     const url = this.URL + 'pedido/cancelarPedido/' + pedido.id;
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
-        console.log(data);
         if (data.includes("No tienes acceso a este servicio")) {
           alert("No tienes acceso a este servicio");
           this.router.navigate(['/login']);
@@ -476,7 +459,6 @@ export class PedidosClientesComponent implements OnInit {
     for (let i = 0; i < this.listaRestaurantes.length; i++) {
       this.peticionGetHttpValoracionResMedia(this.listaRestaurantes[i]);
     }
-    console.log(this.listaRestaurantes);
   }
 
   peticionGetHttpValoracionResMedia(restaurante: Restaurante): void {
@@ -493,14 +475,11 @@ export class PedidosClientesComponent implements OnInit {
         }
       }, error: error => {
         alert("Ha ocurrido un error al cargar la valoración del restaurante");
-        console.log("ERROR:");
-        console.log(error.message);
       }
     });
   }
 
   peticionHttpGetValoracionesDetalladas(restaurante: Restaurante): void {
-    console.log("entro en peticionHttpGetValoracionesDetalladas");
 
     const headers = { 'Content-Type': 'application/json' };
     const body = {
@@ -530,7 +509,6 @@ export class PedidosClientesComponent implements OnInit {
           for (let i = 0; i < listaValJSON.length; i++) {
             let valoracion = new Valoracion(listaValJSON[i], i);
             this.listaValoracionesRes.push(valoracion);
-            console.log(this.listaValoracionesRes[i]);
           }
         };
 
@@ -538,7 +516,6 @@ export class PedidosClientesComponent implements OnInit {
         alert("Ha ocurrido un error al obtener las valoraciones");
       }
     });
-    console.log(this.listaValoracionesRes);
   }
 
   cerrarVentanaValoracionesRes() {
@@ -626,10 +603,8 @@ export class PedidosClientesComponent implements OnInit {
       "passwordAcceso": window.sessionStorage.getItem('password')
     };
 
-    console.log(body.correoAcceso);
 
     let url = this.URL + 'user/actualizarUsuarioCliente/'
-    console.log(url);
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
         if (data.includes("No tienes acceso a este servicio")) {
@@ -661,7 +636,6 @@ export class PedidosClientesComponent implements OnInit {
     };
 
     let url = this.URL + 'user/consultarDatosCliente/'
-    console.log(url);
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
         if (data.includes("No tienes acceso a este servicio")) {
@@ -742,8 +716,6 @@ export class PedidosClientesComponent implements OnInit {
     const url = this.URL + 'pedido/realizarValoracion';
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
-        console.log("DATOS:")
-        console.log(data)
         if (data.includes("No tienes acceso a este servicio")) {
           alert("No tienes acceso a este servicio");
           this.router.navigate(['/login']);
@@ -775,7 +747,6 @@ export class PedidosClientesComponent implements OnInit {
     const url = this.URL + 'pedido/consultarExisteValoracion';
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
-        console.log(data)
         if (data.includes("No tienes acceso a este servicio")) {
           alert("No tienes acceso a este servicio");
           this.router.navigate(['/login']);

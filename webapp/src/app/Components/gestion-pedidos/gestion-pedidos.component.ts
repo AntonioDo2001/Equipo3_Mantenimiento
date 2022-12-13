@@ -40,7 +40,6 @@ export class GestionPedidosComponent implements OnInit {
   }
 
   onSelect(element: Restaurante) {
-    console.log(element);
     this.restauranteSel = element.nombre;
     this.peticionGetPedidosPrepHttp();
     this.peticionGetPedidosEnHttp();
@@ -49,7 +48,6 @@ export class GestionPedidosComponent implements OnInit {
   }
 
   onSelectPedRep(element: Pedido) {
-    console.log(element);
 
     this.pedidoSel = element;
     this.ocultarTodo();
@@ -64,7 +62,6 @@ export class GestionPedidosComponent implements OnInit {
   }
 
   onSelectPedPrep(element: Pedido) {
-    console.log(element);
     this.pedidoSel = element;
     this.ocultarTodo();
     this.funciones.ocultarBtn('asignar_ped',false);
@@ -107,9 +104,7 @@ export class GestionPedidosComponent implements OnInit {
         } else {
           var listaResJSON = data.split(";");
           for (let i = 0; i < listaResJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             this.listaRestaurantes.push(new Restaurante(listaResJSON[i], i))
-            console.log(this.listaRestaurantes[i]);
           }
         }
       }, error: error => {
@@ -222,12 +217,10 @@ export class GestionPedidosComponent implements OnInit {
           } else {
             var listaPedJSON = data.split(";;;");
             for (let i = 0; i < listaPedJSON.length; i++) {
-              //console.log(listaResJSON[i]);
               let pedido = new Pedido(0, listaPedJSON[i], i);
               if (pedido.estado == 0) {
                 this.listaPedidosPreparacion.push(pedido);
               }
-              console.log(this.listaPedidosPreparacion[i]);
             }
           }
         }
@@ -263,12 +256,10 @@ export class GestionPedidosComponent implements OnInit {
         } else {
           var listaPedJSON = data.split(";;;");
           for (let i = 0; i < listaPedJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             let pedido = new Pedido(0, listaPedJSON[i], i);
             if (pedido.estado == 1) {
               this.listaPedidosRepartir.push(pedido);
             }
-            console.log(this.listaPedidosRepartir[i]);
           }
         }
       }, error: error => {

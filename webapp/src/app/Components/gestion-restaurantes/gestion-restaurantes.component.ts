@@ -258,9 +258,7 @@ export class GestionRestaurantesComponent implements OnInit {
         } else {
           var listaResJSON = data.split(";");
           for (let i = 0; i < listaResJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             this.listaRestaurantes.push(new Restaurante(listaResJSON[i], i))
-            console.log(this.listaRestaurantes[i]);
           }
         }
       }, error: error => {
@@ -405,10 +403,8 @@ export class GestionRestaurantesComponent implements OnInit {
         } else {
           var listaPedJSON = data.split(";;;");
           for (let i = 0; i < listaPedJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             let pedido = new Pedido(0, listaPedJSON[i], i);
             this.listaPedidosRes.push(pedido);
-            console.log(this.listaPedidosRes[i]);
 
           }
         };
@@ -447,7 +443,6 @@ export class GestionRestaurantesComponent implements OnInit {
         } else {
 
           this.facturacion = Number(data).toFixed(2);
-          console.log(this.facturacion);
 
         };
 
@@ -537,7 +532,6 @@ export class GestionRestaurantesComponent implements OnInit {
 
   onSelect(element: Restaurante) {
     this.disabledTodos(true);
-    console.log(element);
     this.restauranteSelect = element.nombre;
     this.cerrarVentanaValoracionesRes();
 
@@ -657,7 +651,6 @@ export class GestionRestaurantesComponent implements OnInit {
     if (this.avisoDescP !== "") { errorCampo = true; }
 
     let aux = String(Number(precioPCampo?.value).toFixed(2));
-    console.log(aux);
 
     if (aux === '') {
       errorCampo = true;
@@ -701,7 +694,6 @@ export class GestionRestaurantesComponent implements OnInit {
     if (this.avisoDescP !== "") { errorCampo = true; }
 
     let aux = String(parseFloat(precioPCampo?.value));
-    console.log(Number(precioPCampo?.value));
 
     if (aux === '') {
       errorCampo = true;
@@ -714,7 +706,6 @@ export class GestionRestaurantesComponent implements OnInit {
       this.avisoPrecioP = "";
     }
 
-    console.log(errorCampo);
     
     if (!errorCampo) {
       this.peticionHttpActualizarCarta(nombrePCampo?.value, this.platoSelect, Number(precioPCampo?.value),
@@ -784,7 +775,6 @@ export class GestionRestaurantesComponent implements OnInit {
   }
 
   peticionHttpActualizarCarta(nombreP: string, nombreViejo: string, precioP: number, descripcionP: string, veganoP: boolean, nombreRes: string): void {
-    //console.log("aqui pasa");
     let fotoP = this.guardarFotoPlato(nombreP, nombreRes, this.platoFoto);
     
     
@@ -874,7 +864,6 @@ export class GestionRestaurantesComponent implements OnInit {
       const url = this.URL + 'food/getCarta/' + this.restauranteSelect;
       this.http.get(url, { headers, responseType: 'text' }).subscribe({
         next: data => {
-          //console.log(data);
 
           this.listaPlatos = [];
           if (data.length == 0) {
@@ -884,9 +873,7 @@ export class GestionRestaurantesComponent implements OnInit {
           } else {
             var listaCartaJSON = data.split(";;");
             for (let i = 0; i < listaCartaJSON.length; i++) {
-              //console.log(listaResJSON[i]);
               this.listaPlatos.push(new Plato(listaCartaJSON[i], i))
-              console.log(this.listaPlatos[i]);
             }
           }
         }, error: error => {
@@ -900,7 +887,6 @@ export class GestionRestaurantesComponent implements OnInit {
 
   onSelectP(element: Plato) {
     this.disabledTodosP(true);
-    console.log(element);
 
     this.funciones.apagarElementosLista('listaPlatos');
     this.funciones.resaltarElementoLista('listaPlatos', element.pos);
@@ -1006,25 +992,7 @@ export class GestionRestaurantesComponent implements OnInit {
       return '../../../assets/plt_images/food.png';
     }
     return fotoBase64;
-    //let pathToSaveImage = '../../../assets/plt_images/' + restaurante + '-' + plato + '.png';
-    /*let pathGuardado;
-    try {
-      pathGuardado = converBase64ToImage(fotoBase64, pathToSaveImage);
-    } catch (error) {
-      console.log(error);
-      pathGuardado = '../../../assets/plt_images/food.png';
-    }*/
-    /*try {
-      fs.writeFile(pathToSaveImage, fotoBase64, 'base64', function (err:any) {
-        console.log(err);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-
-    //console.log(pathGuardado);
-    console.log(pathToSaveImage);
-    return pathToSaveImage;*/
+    
   }
 
   mostrarValoracionesRes() {
@@ -1055,8 +1023,7 @@ export class GestionRestaurantesComponent implements OnInit {
       const url = this.URL + 'pedido/consultarValoracionRestauranteMedia';
       this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
         next: data => {
-          console.log("DATOS:")
-          console.log(data);
+
 
           if (data.includes("El restaurante no tiene valoraciones")) {
             //alert(window.sessionStorage.getItem('rol'));
@@ -1066,8 +1033,7 @@ export class GestionRestaurantesComponent implements OnInit {
           }
         }, error: error => {
           //alert("Ha ocurrido un error al cargar la valoración del restaurante");
-          console.log("ERROR:");
-          console.log(error.message);
+
           return 0
         }
       });
@@ -1089,8 +1055,7 @@ export class GestionRestaurantesComponent implements OnInit {
       const url = this.URL + 'pedido/consultarMedia/' + this.restauranteSelect;
       this.http.get(url, { headers, responseType: 'text' }).subscribe({
         next: data => {
-          console.log("DATOS:")
-          console.log(data);
+ 
 
           if (data.includes("El restaurante no tiene valoraciones")) {
             this.funciones.asignarValorID('valoracionRes', "0.0");
@@ -1100,8 +1065,7 @@ export class GestionRestaurantesComponent implements OnInit {
           }
         }, error: error => {
           alert("Ha ocurrido un error al cargar la valoración del restaurante");
-          console.log("ERROR:");
-          console.log(error.message);
+
         }
       });
     } else {
@@ -1138,7 +1102,6 @@ export class GestionRestaurantesComponent implements OnInit {
           for (let i = 0; i < listaValJSON.length; i++) {
             let valoracion = new Valoracion(listaValJSON[i], i);
             this.listaValoracionesRes.push(valoracion);
-            console.log(this.listaValoracionesRes[i]);
 
           }
         };

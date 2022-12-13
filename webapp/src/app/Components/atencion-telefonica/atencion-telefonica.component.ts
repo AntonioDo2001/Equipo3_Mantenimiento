@@ -91,9 +91,7 @@ export class AtencionTelefonicaComponent implements OnInit {
         } else {
           var listaResJSON = data.split(";");
           for (let i = 0; i < listaResJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             this.listaRestaurantes.push(new Restaurante(listaResJSON[i], i))
-            console.log(this.listaRestaurantes[i]);
           }
         }
       }, error: error => {
@@ -136,10 +134,8 @@ export class AtencionTelefonicaComponent implements OnInit {
         } else {
           var listaPedJSON = data.split(";;;");
           for (let i = 0; i < listaPedJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             let pedido = new Pedido(0, listaPedJSON[i], i);
             this.listaPedidosRes.push(pedido);
-            console.log(this.listaPedidosRes[i]);
 
           }
         };
@@ -185,7 +181,6 @@ export class AtencionTelefonicaComponent implements OnInit {
       const url = this.URL + 'pedido/cancelarPedido/' + pedido.id;
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
-        console.log(data)
          if (data.includes("Ya no puedes cancelar el pedido")) {
           alert("Ya no puedes cancelar el pedido ya que está entregado o en reparto");
         } else if (data.includes("No existe ese pedido")) {

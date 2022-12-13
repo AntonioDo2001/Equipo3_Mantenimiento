@@ -84,7 +84,6 @@ export class LoginComponent implements OnInit {
         }
       },
       error: error => {
-        console.log(error);
         alert("Ha ocurrido un error al iniciar sesión");
       }
     });

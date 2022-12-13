@@ -64,10 +64,8 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
         } else {
           var listaResJSON = data.split(";");
           for (let i = 0; i < listaResJSON.length; i++) {
-            //console.log(listaResJSON[i]);
             var rest = new Restaurante(listaResJSON[i], i);
             this.listaRestaurantes.push(rest)
-            console.log(this.listaRestaurantes[i]);
           }
         }
       }, error: error => {
@@ -86,7 +84,6 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
       const url = this.URL + 'food/getCarta/' + this.restauranteSel;
       this.http.get(url, { headers, responseType: 'text' }).subscribe({
         next: data => {
-          //console.log(data);
 
           this.listaPlatos = [];
           if (data.length == 0) {
@@ -95,9 +92,7 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
           } else {
             var listaCartaJSON = data.split(";;");
             for (let i = 0; i < listaCartaJSON.length; i++) {
-              //console.log(listaResJSON[i]);
               this.listaPlatos.push(new Plato(listaCartaJSON[i], i))
-              console.log(this.listaPlatos[i]);
             }
           }
         }, error: error => {
@@ -130,7 +125,6 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
   }
 
   onSelectPedEnt(element: Pedido) {
-    console.log(element);
     this.pedidoSel = element;
     this.funciones.ocultarBtn('btn_cancelarPed', true);
 
@@ -150,8 +144,6 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
     
 
     this.pedidoSel = element;
-    console.log(element);
-    console.log(this.listaPlatosPedidoSel);
 
     this.funciones.ocultarBtn('btn_cancelarPed', false);
 
@@ -167,8 +159,7 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
     this.listaPlatosPedidoSel = [];
     this.listaPlatosPedidoSel = this.funciones.genPlatosPedido(element, element.restaurante);
     this.pedidoSel = element;
-    console.log(element);
-    console.log(this.listaPlatosPedidoSel);
+  
     
     this.funciones.apagarElementosLista('listaPedidosPendientes');
     this.funciones.resaltarElementoLista('listaPedidosPendientes', element.pos);
@@ -217,8 +208,7 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
       let linea = new LineaPlato(element.nombreP,
         String(element.precioP), String(1), this.restauranteSel);
       linea.foto = element.fotoP;
-      console.log(linea);
-      console.log(element);
+
       this.funciones.addLineaPlatoPedido(pedidoAux, linea);
 
       this.listaPedidosPendientes.push(pedidoAux);
@@ -244,7 +234,6 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
   }
 
   disminuirCantidadPlatoPed(element: LineaPlato) {
-    console.log(this.listaPlatosPedidoSel);
     if (Number(element.cantidad) > 1) {
       element.cantidad = String(Number(element.cantidad) - 1);
     }
@@ -302,7 +291,6 @@ export class RealizarPedidoAsistenciaTelefComponent implements OnInit {
     const url = this.URL + 'pedido/crearPedido/';
     this.http.post(url, body, { headers, responseType: 'text' }).subscribe({
       next: data => {
-        console.log(data);
         if (data.includes("No tienes acceso a este servicio")) {
           alert("No tienes acceso a este servicio");
           this.router.navigate(['/login']);
