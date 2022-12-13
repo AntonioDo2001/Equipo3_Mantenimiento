@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import Equipo3.TIComo_project.model.User;
 import Equipo3.TIComo_project.model.Admin;
+import Equipo3.TIComo_project.model.AsistenteTelefonico;
 import Equipo3.TIComo_project.model.Client;
 import Equipo3.TIComo_project.model.Rider;
 import Equipo3.TIComo_project.dao.UserRepository;
 import Equipo3.TIComo_project.dao.AdminRepository;
+import Equipo3.TIComo_project.dao.AsistenteTelefonicoRepository;
 import Equipo3.TIComo_project.dao.ClientRepository;
 import Equipo3.TIComo_project.dao.PedidoRepository;
 import Equipo3.TIComo_project.dao.RiderRepository;
@@ -33,6 +35,9 @@ public class UserService {
 	private AdminRepository adminDAO;
 	
 	@Autowired
+	private AsistenteTelefonicoRepository asistenteDAO;
+	
+	@Autowired
 	private PedidoService pioService;
 	
 	@Autowired
@@ -42,6 +47,7 @@ public class UserService {
 	private String client = "client";
 	private String rider = "rider";
 	private String admin = "admin";
+	private String asistenteTelfonico = "asistente";
 	private String direccion = "direccion";
 	private String carnet = "carnet";
 	private String telefono = "telefono";
@@ -65,8 +71,10 @@ public class UserService {
 					rol = this.client;
 				else if (user.getRol().equals(this.admin))
 					rol = this.admin;
-				else 
+				else if (user.getRol().equals(this.rider))
 					rol = this.rider;
+				else if (user.getRol().equals(this.asistenteTelfonico))
+					rol = this.asistenteTelfonico;
 			}
 		}
 		return rol;
@@ -110,6 +118,10 @@ public class UserService {
 			riderr.setTipovehiculo(jso.getString(this.tipoVehiculo));
 			riderr.setActivo(true);
 			this.riderDAO.save(riderr);
+		} else if (rol.equals(this.asistenteTelfonico)) {
+			AsistenteTelefonico asistente = new AsistenteTelefonico();
+			asistente.setCorreo(jso.getString(this.correo));
+			this.asistenteDAO.save(asistente);
 		} else {
 			Admin adminn = new Admin();
 			adminn.setCorreo(jso.getString(this.correo));
@@ -143,7 +155,10 @@ public class UserService {
 				if(this.pioService.tienePedidosPendientes(correoUsuario))
 					return "El cliente tiene pedidos pendientes";
 				this.clientDAO.deleteByCorreo(correoUsuario);
-			}else {
+			}else if (rol.equals(this.asistenteTelfonico)) {
+				this.asistenteDAO.deleteByCorreo(correoUsuario);
+			}	
+			else {
 				this.adminDAO.deleteByCorreo(correoUsuario);
 			}
 		}else return this.correo;
@@ -167,6 +182,10 @@ public class UserService {
 				riderr.setActivo(Boolean.valueOf(json.getString(this.activo)));
 				this.riderDAO.deleteByCorreo(correo);
 				this.riderDAO.save(riderr);
+			}else if(json.getString("rol").equals(this.asistenteTelfonico)) {
+				AsistenteTelefonico asistente = this.asistenteDAO.findByCorreo(correo);
+				this.asistenteDAO.deleteByCorreo(correo);
+				this.asistenteDAO.save(asistente);
 			}else {
 				this.actualizarCli(correo, json);
 			}
@@ -305,6 +324,30 @@ public class UserService {
 		}
 		return bld.toString();
 	}
+	
+	public JSONObject userAsistente(AsistenteTelefonico asistente) {
+		User user = this.userDAO.findByCorreo(asistente.getCorreo());
+		JSONObject jso = new JSONObject();
+		jso.put(this.nombre, user.getNombre());
+		jso.put(this.password, this.secService.desencriptar(user.getPassword()));
+		jso.put(this.apellidos, user.getApellidos());
+		jso.put(this.correo, asistente.getCorreo());
+		jso.put("nif", this.secService.desencriptar(user.getNif()));
+		return jso;    
+	}
+
+	public String userAsistentes(List<AsistenteTelefonico> list) {
+		StringBuilder bld = new StringBuilder();
+		for (int i = 0; i<list.size(); i++) {
+			AsistenteTelefonico asistente = list.get(i);
+			JSONObject jso = this.userAsistente(asistente);
+			if (i == list.size() - 1)
+				bld.append(jso.toString());
+			else
+				bld.append(jso.toString() + ";");
+		}
+		return bld.toString();
+	}
 
 	public List<Rider> consultarRiders(){
 		return this.riderDAO.findAll();
@@ -316,6 +359,10 @@ public class UserService {
 
 	public List<Client> consultarClients(){
 		return this.clientDAO.findAll();
+	}
+	
+	public List<AsistenteTelefonico> consultarAsistentes(){
+		return this.asistenteDAO.findAll();
 	}
 
 	public String consultarDatosCliente(String cliente) {

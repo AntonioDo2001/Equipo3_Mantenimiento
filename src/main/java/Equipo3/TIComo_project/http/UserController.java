@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import Equipo3.TIComo_project.model.Admin;
+import Equipo3.TIComo_project.model.AsistenteTelefonico;
 import Equipo3.TIComo_project.model.Client;
 import Equipo3.TIComo_project.model.Rider;
 import Equipo3.TIComo_project.services.SecurityService;
@@ -29,6 +30,7 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
 	
 	@Autowired
 	private SecurityService secService;
@@ -212,6 +214,28 @@ public class UserController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
 	}
+	
+	@CrossOrigin
+	@PostMapping("/getAsistentes")
+	public ResponseEntity<String> consultarAsistentes(@RequestBody Map<String, Object> info) {
+		JSONObject json = new JSONObject(info);
+		
+		if (!this.secService.accesoAdmin(json))
+			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
+		List<AsistenteTelefonico> listaResponse;
+		try {
+			listaResponse = this.userService.consultarAsistentes();  //Recojo la lista en una variable.
+			if(listaResponse.isEmpty()) {
+				return new ResponseEntity<>("", HttpStatus.OK);
+			}else {
+				return new ResponseEntity<>(this.userService.userAsistentes(listaResponse), HttpStatus.OK);
+			}
+
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+	}
+	
 	
 	@CrossOrigin
 	@GetMapping("/pipeline")

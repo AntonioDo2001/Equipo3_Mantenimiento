@@ -41,13 +41,8 @@ public class PedidoController {
 	public ResponseEntity<String> crearPedido(@RequestBody Map<String, Object> info) {
 		try {
 			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoCliente(jso)) {
-				if(this.secService.isActivo(jso.getString(this.correoAcceso))){
 					return new ResponseEntity<>(this.pedidoService.crearPedido(jso), HttpStatus.OK);
-				}
-				return new ResponseEntity<>(this.inActivo, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
+				
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
@@ -58,14 +53,12 @@ public class PedidoController {
 	public ResponseEntity<String> cancelarPedido(@RequestBody Map<String, Object> info, @PathVariable String idPedido) {
 		try {
 			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoCliente(jso)) {
 				String correoCliente = jso.getString(this.correoAcceso);
 				if(this.secService.isActivo(correoCliente)){
 					return new ResponseEntity<>(this.pedidoService.cancelarPedido(idPedido, correoCliente), HttpStatus.OK);
 				}
 				return new ResponseEntity<>(this.inActivo, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
+
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
@@ -76,7 +69,7 @@ public class PedidoController {
 	public ResponseEntity<String> consultarPedidosCliente(@RequestBody Map<String, Object> info) {
 		try {
 			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoCliente(jso)) {
+
 				if(this.secService.isActivo(jso.getString(this.correoAcceso))){
 					String response = this.pedidoService.consultarPedidosCliente(jso.getString(this.correoAcceso));
 					if (!response.equals(""))
@@ -84,8 +77,6 @@ public class PedidoController {
 					return new ResponseEntity<>(this.noHay, HttpStatus.OK);
 				}
 				return new ResponseEntity<>(this.inActivo, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
@@ -95,14 +86,11 @@ public class PedidoController {
 	@PostMapping("/consultarTodosPedidos")
 	public ResponseEntity<String> consultarTodosPedidos(@RequestBody Map<String, Object> info) {
 		try {
-			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoAdmin(jso)) {
-				String response = this.pedidoService.consultarTodosPedidos();
-				if (!response.equals(""))
-					return new ResponseEntity<>(response, HttpStatus.OK);
-				return new ResponseEntity<>(this.noHay, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
+			String response = this.pedidoService.consultarTodosPedidos();
+			if (!response.equals(""))
+				return new ResponseEntity<>(response, HttpStatus.OK);
+			return new ResponseEntity<>(this.noHay, HttpStatus.OK);
+
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
@@ -112,14 +100,12 @@ public class PedidoController {
 	@PostMapping("/consultarPedidosRes/{restaurante}")
 	public ResponseEntity<String> consultarPedidosRestaurante(@RequestBody Map<String, Object> info, @PathVariable String restaurante) {
 		try {
-			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoAdmin(jso)) {
-				String response = this.pedidoService.consultarPedidosRes(restaurante);
-				if (!response.equals(""))
-					return new ResponseEntity<>(response, HttpStatus.OK);
-				return new ResponseEntity<>(this.noHay, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
+
+			String response = this.pedidoService.consultarPedidosRes(restaurante);
+			if (!response.equals(""))
+				return new ResponseEntity<>(response, HttpStatus.OK);
+			return new ResponseEntity<>(this.noHay, HttpStatus.OK);
+
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
@@ -129,14 +115,10 @@ public class PedidoController {
 	@PostMapping("/consultarPedidosRider/{rider}")
 	public ResponseEntity<String> consultarPedidosRider(@RequestBody Map<String, Object> info, @PathVariable String rider) {
 		try {
-			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoAdmin(jso)) {
-				String response = this.pedidoService.consultarPedidosRider(rider);
-				if (!response.equals(""))
-					return new ResponseEntity<>(response, HttpStatus.OK);
-				return new ResponseEntity<>(this.noHay, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
+			String response = this.pedidoService.consultarPedidosRider(rider);
+			if (!response.equals(""))
+				return new ResponseEntity<>(response, HttpStatus.OK);
+			return new ResponseEntity<>(this.noHay, HttpStatus.OK);
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
@@ -147,7 +129,6 @@ public class PedidoController {
 	public ResponseEntity<String> consultarPedidosPre(@RequestBody Map<String, Object> info, @PathVariable String restaurante) {
 		try {
 			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoRider(jso)) {
 				if(this.secService.isActivo(jso.getString(this.correoAcceso))){
 					String response = this.pedidoService.consultarPedidosPre(restaurante);
 					if (!response.equals(""))
@@ -155,8 +136,6 @@ public class PedidoController {
 					return new ResponseEntity<>(this.noHay, HttpStatus.OK);
 				}
 				return new ResponseEntity<>(this.inActivo, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
@@ -167,7 +146,6 @@ public class PedidoController {
 	public ResponseEntity<String> consultarPedidosEn(@RequestBody Map<String, Object> info) {
 		try {
 			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoRider(jso)) {
 				String rider = jso.getString(this.correoAcceso);
 				if(this.secService.isActivo(rider)){
 					String response = this.pedidoService.consultarPedidosEn(rider);
@@ -176,8 +154,6 @@ public class PedidoController {
 					return new ResponseEntity<>(this.noHay, HttpStatus.OK);
 				}
 				return new ResponseEntity<>(this.inActivo, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
@@ -270,10 +246,8 @@ public class PedidoController {
 	public ResponseEntity<String> consultarFacturacion(@RequestBody Map<String, Object> info) {
 		try {
 			JSONObject jso = new JSONObject(info);
-			if (this.secService.accesoAdmin(jso)) {
+			
 				return new ResponseEntity<>(this.pedidoService.consultarFacturacion(jso), HttpStatus.OK);
-			}
-			return new ResponseEntity<>(this.sinAcceso, HttpStatus.OK);
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
